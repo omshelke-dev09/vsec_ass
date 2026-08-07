@@ -1,57 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Basic UI Components</title>
+    <title>Student Details</title>
 </head>
 <body>
 
-    <!-- Heading -->
-    <h1>Student Registration Form</h1>
+<h2>STUDENT DETAIL FORM</h2>
 
-    <!-- Label and Textbox -->
-    <label>Name:</label>
-    <input type="text" placeholder="Enter your name">
-    <br><br>
+<label>Student Name :</label>
+<input type="text" id="name"><br><br>
 
-    <!-- Email -->
-    <label>Email:</label>
-    <input type="email" placeholder="Enter your email">
-    <br><br>
+<label>Physics :</label>
+<input type="number" id="Physics"><br><br>
 
-    <!-- Password -->
-    <label>Password:</label>
-    <input type="password" placeholder="Enter password">
-    <br><br>
+<label>Chemistry :</label>
+<input type="number" id="Chem"><br><br>
 
-    <!-- Radio Buttons -->
-    <label>Gender:</label>
-    <input type="radio" name="gender"> Male
-    <input type="radio" name="gender"> Female
-    <br><br>
+<label>Maths :</label>
+<input type="number" id="Maths"><br><br>
 
-    <!-- Checkbox -->
-    <label>Skills:</label>
-    <input type="checkbox"> HTML
-    <input type="checkbox"> CSS
-    <input type="checkbox"> JavaScript
-    <br><br>
+<button onclick="calculate()">SUBMIT</button>
 
-    <!-- Dropdown -->
-    <label>Department:</label>
-    <select>
-        <option>Computer</option>
-        <option>Information Technology</option>
-        <option>Mechanical</option>
-    </select>
-    <br><br>
+<h3>RESULT</h3>
 
-    <!-- Text Area -->
-    <label>Address:</label><br>
-    <textarea rows="4" cols="30"></textarea>
-    <br><br>
+<table border="1" id="resultTable">
+    <tr>
+        <th>Student Name</th>
+        <th>Total Marks</th>
+        <th>Percentage</th>
+    </tr>
+</table>
 
-    <!-- Button -->
-    <button>Submit</button>
+<script src="script.js"></script>
 
 </body>
 </html>
