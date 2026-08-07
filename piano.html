@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keyboard Piano</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family:Arial, sans-serif;
+            background:#222;
+            color:white;
+            text-align:center;
+        }
+
+        h1{
+            margin-top:20px;
+        }
+
+        p{
+            color:lightgray;
+        }
+
+        #piano{
+            position:relative;
+            width:700px;
+            height:250px;
+            margin:40px auto;
+        }
+
+        /* White Keys */
+
+        .white{
+            width:80px;
+            height:250px;
+            background:white;
+            border:2px solid black;
+            float:left;
+            box-sizing:border-box;
+            position:relative;
+            cursor:pointer;
+            user-select:none;
+        }
+
+        .white.active{
+            background:#ddd;
+        }
+
+        /* Black Keys */
+
+        .black{
+            width:50px;
+            height:150px;
+            background:black;
+            position:absolute;
+            top:0;
+            z-index:2;
+            color:white;
+            cursor:pointer;
+            user-select:none;
+        }
+
+        .black.active{
+            background:#444;
+        }
+
+        .label{
+            position:absolute;
+            bottom:10px;
+            width:100%;
+            text-align:center;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🎹 Keyboard Piano</h1>
+
+<p>
+Press keys:
+A S D F G H J
+<br>
+Black Keys:
+W E T Y U
+</p>
+
+<div id="piano">
+
+    <!-- White Keys -->
+
+    <div class="white" data-key="a" data-note="261.63">
+        <div class="label">A</div>
+    </div>
+
+    <div class="white" data-key="s" data-note="293.66">
+        <div class="label">S</div>
+    </div>
+
+    <div class="white" data-key="d" data-note="329.63">
+        <div class="label">D</div>
+    </div>
+
+    <div class="white" data-key="f" data-note="349.23">
+        <div class="label">F</div>
+    </div>
+
+    <div class="white" data-key="g" data-note="392.00">
+        <div class="label">G</div>
+    </div>
+
+    <div class="white" data-key="h" data-note="440.00">
+        <div class="label">H</div>
+    </div>
+
+    <div class="white" data-key="j" data-note="493.88">
+        <div class="label">J</div>
+    </div>
+
+    <!-- Black Keys -->
+
+    <div class="black" style="left:55px"
+        data-key="w"
+        data-note="277.18">
+        <div class="label">W</div>
+    </div>
+
+    <div class="black" style="left:135px"
+        data-key="e"
+        data-note="311.13">
+        <div class="label">E</div>
+    </div>
+
+    <div class="black" style="left:295px"
+        data-key="t"
+        data-note="369.99">
+        <div class="label">T</div>
+    </div>
+
+    <div class="black" style="left:375px"
+        data-key="y"
+        data-note="415.30">
+        <div class="label">Y</div>
+    </div>
+
+    <div class="black" style="left:455px"
+        data-key="u"
+        data-note="466.16">
+        <div class="label">U</div>
+    </div>
+
+</div>
+
+<script>
+
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const audioCtx = new AudioContext();
+
+function playSound(freq){
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.frequency.value = freq;
+    osc.type = "sine";
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        audioCtx.currentTime + 1
+    );
+
+    osc.start();
+    osc.stop(audioCtx.currentTime + 1);
+}
+
+// Keyboard Press
+
+document.addEventListener("keydown", function(event){
+
+    let key = event.key.toLowerCase();
+
+    let pianoKey =
+        document.querySelector(`[data-key="${key}"]`);
+
+    if(pianoKey){
+
+        let freq = pianoKey.dataset.note;
+
+        playSound(freq);
+
+        pianoKey.classList.add("active");
+
+        setTimeout(function(){
+            pianoKey.classList.remove("active");
+        },150);
+    }
+
+});
+
+// Mouse Click
+
+document.querySelectorAll(".white,.black").forEach(function(key){
+
+    key.addEventListener("click",function(){
+
+        playSound(this.dataset.note);
+
+        this.classList.add("active");
+
+        setTimeout(()=>{
+            this.classList.remove("active");
+        },150);
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

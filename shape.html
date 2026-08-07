@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Increase and Decrease Shape Size</title>
+    <style>
+        #shape {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 20px auto;
+        }
+
+        .buttons {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="shape"></div>
+
+    <div class="buttons">
+        <button onclick="increaseSize()">Increase Size</button>
+        <button onclick="decreaseSize()">Decrease Size</button>
+    </div>
+
+    <script>
+        let size = 100;
+
+        function increaseSize() {
+            size += 20;
+            document.getElementById("shape").style.width = size + "px";
+            document.getElementById("shape").style.height = size + "px";
+        }
+
+        function decreaseSize() {
+            if (size > 20) {
+                size -= 20;
+                document.getElementById("shape").style.width = size + "px";
+                document.getElementById("shape").style.height = size + "px";
+            }
+        }
+    </script>
+
+</body>
+</html>

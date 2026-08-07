@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flower Coloring App</title>
+
+    <style>
+        /* Styles the whole webpage */
+        body{
+            text-align:center;          /* Centers all content */
+            font-family:Arial,sans-serif; /* Sets the font */
+            background:#fffefe;         /* Light gray background */
+        }
+
+        /* Styles the SVG drawing area */
+        svg{
+            border:2px solid black;    /* Black border around flower */
+            background:rgb(27, 30, 28);          /* White background */
+            margin-top:20px;           /* Space above the flower */
+        }
+
+        /* Styles the color picker */
+        input{
+            margin:15px;
+            width:60px;
+            height:40px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Heading -->
+    <h2>Flower Coloring App</h2>
+
+    <!-- Text beside color picker -->
+    <label>Select Color :</label>
+
+    <!-- Color Picker -->
+    <!-- Default color is Red -->
+    <input type="color" id="colorPicker" value="#ff0000">
+
+    <br>
+
+    <!-- SVG starts -->
+    <!-- SVG is used to draw shapes -->
+    <svg width="400" height="400">
+
+        <!-- ================= STEM ================= -->
+
+        <!-- Rectangle used as stem -->
+        <!-- x = Horizontal position -->
+        <!-- y = Vertical position -->
+        <!-- width = Rectangle width -->
+        <!-- height = Rectangle height -->
+        <!-- fill = Inside color -->
+        <!-- stroke = Border color -->
+
+        <rect
+            x="195"
+            y="180"
+            width="10"
+            height="140"
+            fill="green"
+            stroke="black"
+        />
+
+        <!-- ================= LEAF 1 ================= -->
+
+        <!-- Ellipse creates an oval -->
+        <!-- cx = Center X -->
+        <!-- cy = Center Y -->
+        <!-- rx = Horizontal radius -->
+        <!-- ry = Vertical radius -->
+        <!-- onclick calls JavaScript when clicked -->
+
+        <ellipse
+            cx="170"
+            cy="240"
+            rx="25"
+            ry="12"
+            fill="lightgreen"
+            stroke="black"
+            onclick="fillColor(evt)"
+        />
+
+        <!-- ================= LEAF 2 ================= -->
+
+        <ellipse
+            cx="230"
+            cy="260"
+            rx="25"
+            ry="12"
+            fill="lightgreen"
+            stroke="black"
+            onclick="fillColor(evt)"
+        />
+
+        <!-- ================= FLOWER CENTER ================= -->
+
+        <circle
+            cx="200"
+            cy="150"
+            r="30"
+            fill="yellow"
+            stroke="black"
+            onclick="fillColor(evt)"
+        />
+
+        <!-- ================= PETALS ================= -->
+
+        <circle
+            cx="200"
+            cy="90"
+            r="35"
+            fill="white"
+            stroke="black"
+            onclick="fillColor(evt)"
+        />
+
+        <circle
+            cx="200"
+            cy="210"
+            r="35"
+            fill="white"
+            stroke="black"
+            onclick="fillColor(evt)"
+        />
+
+        <circle
+            cx="140"
+            cy="150"
+            r="35"
+            fill="white"
+            stroke="black"
+            onclick="fillColor(evt)"
+        />
+
+        <circle
+            cx="260"
+            cy="150"
+            r="35"
+            fill="white"
+            stroke="black"
+            onclick="fillColor(evt)"
+        />
+
+        <circle
+            cx="160"
+            cy="105"
+            r="35"
+            fill="white"
+            stroke="black"
+            onclick="fillColor(evt)"
+        />
+
+        <circle
+            cx="240"
+            cy="105"
+            r="35"
+            fill="white"
+            stroke="black"
+            onclick="fillColor(evt)"
+        />
+
+        <circle
+            cx="160"
+            cy="195"
+            r="35"
+            fill="white"
+            stroke="black"
+            onclick="fillColor(evt)"
+        />
+
+        <circle
+            cx="240"
+            cy="195"
+            r="35"
+            fill="white"
+            stroke="black"
+            onclick="fillColor(evt)"
+        />
+
+    </svg>
+
+    <script>
+
+        // Function runs whenever any flower part is clicked
+        function fillColor(event)
+        {
+
+            // Gets the selected color from the color picker
+            let color = document.getElementById("colorPicker").value;
+
+            // event.target refers to the shape that was clicked
+            // setAttribute() changes the fill color of that shape
+            event.target.setAttribute("fill", color);
+
+        }
+
+    </script>
+
+</body>
+</html>
