@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: lightblue;
+}
+
+.signup-box {
+    width: 300px;
+    background: white;
+    padding: 25px;
+    margin: 80px auto;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.signup-box h2 {
+    color: blue;
+}
+
+.signup-box input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px;
+}
+
+.signup-box button {
+    background: blue;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    margin: 10px;
+}
+
+.signup-box a {
+    color: blue;
+    text-decoration: none;
+}
