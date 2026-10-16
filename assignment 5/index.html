@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Color Boxes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- The text hidden behind -->
+        <h1 class="hidden-text">Welcome to my<br>Website</h1>
+
+        <!-- The 4 color boxes -->
+        <div class="box-container">
+            <div class="color-box red-box"></div>
+            <div class="color-box blue-box"></div>
+            <div class="color-box green-box"></div>
+            <div class="color-box orange-box"></div>
+        </div>
+    </div>
+
+    <script>
+        // Select all elements with the class "color-box"
+        const boxes = document.getElementsByClassName("color-box");
+
+        // Loop through each box using a simple 'for...of' loop
+        for (let box of boxes) {
+            box.addEventListener("click", () => {
+                // Toggle the 'active-move' class on click
+                box.classList.toggle("active-move");
+            });
+        }
+    </script>
+
+</body>
+</html>

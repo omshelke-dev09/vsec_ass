@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Main wrapper to hold everything */
+.wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.hidden-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #333;
+    font-size: 18px;
+    z-index: 0; /* Keep text behind */
+}
+
+.box-container {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    z-index: 1; /* Keep boxes in front */
+}
+
+.color-box {
+    width: 100px;
+    height: 100px;
+    position: absolute; /* Place boxes manually instead of using Grid */
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+/* Positioning and setting directions for each box */
+.red-box { top: 0; left: 0; background: red; --moveX: -1; --moveY: -1; }
+.blue-box { top: 0; right: 0; background: blue; --moveX: 1; --moveY: -1; }
+.green-box { bottom: 0; left: 0; background: green; --moveX: -1; --moveY: 1; }
+.orange-box { bottom: 0; right: 0; background: orange; --moveX: 1; --moveY: 1; }
+
+/* The movement class toggled by JavaScript */
+.color-box.active-move {
+    transform: translate(
+        calc(var(--moveX) * 50px), 
+        calc(var(--moveY) * 50px)
+    );
+}

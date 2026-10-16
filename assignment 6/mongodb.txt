@@ -1,0 +1,71 @@
+
+ // 1. Create or Use Database
+use("OM_SHELKE");
+
+// 2. Insert One Document
+db.engineers.insertOne({
+    name: "OM",
+    age: 20,
+    city: "Nashik",
+    course: "IT",
+    marks: 88
+});
+
+// 3. Insert Many Documents
+db.engineers.insertMany([
+    { name: "Atharva", age: 21, city: "Pune", course: "IT", marks: 82 },
+    { name: "Omkar", age: 20, city: "Mumbai", course: "CS", marks: 79 },
+    { name: "Prathamesh", age: 22, city: "Nashik", course: "ENTC", marks: 74 },
+    { name: "Yash", age: 19, city: "Pune", course: "CS", marks: 85 }
+]);
+
+// 4. Display All Documents
+db.engineers.find({});
+
+// 5. Find Documents Using a Condition
+db.engineers.find({
+    age: { $gt: 20 }
+});
+
+// 6. Update One Document
+db.engineers.updateOne(
+    { name: "OM" },
+    { $set: { marks: 95 } }
+);
+
+// 7. Update Multiple Documents
+db.engineers.updateMany(
+    { course: "CS" },
+    { $set: { course: "Computer Science" } }
+);
+
+// 8. Delete One Document
+db.engineers.deleteOne({
+    name: "Prathamesh"
+});
+
+// 9. Delete Multiple Documents
+db.engineers.deleteMany({
+    city: "Pune"
+});
+
+// 10. Sort Documents by Age (Ascending)
+db.engineers.find({}).sort({ age: 1 });
+
+// 11. Display Only Name and Marks
+db.engineers.find(
+    {},
+    { _id: 0, name: 1, marks: 1 }
+);
+
+// 12. Count Documents
+db.engineers.countDocuments({});
+
+// 13. Limit Documents to One Result
+db.engineers.find({}).limit(1);
+
+// 14. Drop Collection
+db.engineers.drop();
+
+// 15. Drop Database
+db.dropDatabase();
